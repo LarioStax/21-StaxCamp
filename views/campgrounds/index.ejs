@@ -1,0 +1,30 @@
+<%- include("../partials/header")%>
+
+<header class="jumbotron mb-4">
+  <h1 class="display-4">Welcome to $taxCamp</h1>
+  <p class="lead">Best campgrounds in the world by far!</p>
+  <hr class="my-4">
+  <a class="btn btn-dark btn-lg" href="/campgrounds/new" role="button">Add new campground!</a>
+</header>
+
+<hr class="mb-4">
+
+<div class="row text-center">
+	<% campgrounds.forEach(function(campground) {%>
+		<div class="col-xl-4 col-md-4 col-sm-6 mb-4">
+			<a href="/campgrounds/<%= campground._id%>" class="custom-card">
+				<div class="card bg-light rounded">
+					<img src="<%= campground.image%>" alt="Image of <%=campground.name%>" class="card-img-top img-fluid">
+					<div class="caption bg-dark rounded-bottom">
+						<h5>
+							<strong><%=campground.name%></strong>
+						</h5>
+					</div>
+				</div>
+			</a>
+		</div>
+	<% })%>
+</div>
+
+
+<%- include("../partials/footer")%>

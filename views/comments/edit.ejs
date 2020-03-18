@@ -1,0 +1,26 @@
+<%- include("../partials/header")%>
+
+<div class="row justify-content-center">
+	<div class="col-md-12 text-center">
+		<h1 class="mb-4">Editing a comment on <%= campground.name %></h1>
+	</div>		
+	<div class="col-lg-8 col-md-8 col-sm-8 col-xs-12">
+		<form action="/campgrounds/<%= campground._id %>/comments/<%= comment._id %>?_method=PUT" method="POST">
+			<div class="form-group">
+				<label for="inputComment" class="sr-only">Comment</label>
+				<textarea class="form-control" name="comment[text]" id="inputComment" placeholder="Text" rows="5" required><%= comment.text %></textarea>
+			</div>
+			<div class="form-group">
+				<button class="btn btn-lg btn-dark btn-block" type="submit">Submit!</button>
+			</div>
+				<input class="invisible" type="checkbox" name="comment[isEdited]" value="true" checked>
+		</form>
+
+
+		<a href="/campgrounds">Go Back!</a>
+	</div>
+</div>
+
+
+<%- include("../partials/footer")%>	
+

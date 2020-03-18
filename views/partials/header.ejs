@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<!-- Make site responsive on mobile/tablet -->
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<title>$taxCamp</title>
+		<link rel="stylesheet" type="text/css" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
+		<link rel="stylesheet" type="text/css" href="/stylesheets/main.css">
+	</head>
+	<body class="bg-light">
+
+		<nav class="navbar navbar-expand-md navbar-dark bg-dark mb-4">
+		  <div class="container">
+			  <a class="navbar-brand" href="/">$taxCamp</a>
+
+			  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
+			    <span class="navbar-toggler-icon"></span>
+			  </button>
+
+			  <div class="collapse navbar-collapse" id="navbarCollapse">
+
+			  	<!-- Left Side -->
+			    <ul class="navbar-nav mr-auto">
+			      <li class="nav-item <%= typeof page !== 'undefined' && page === 'campgrounds' ? 'active' : '' %>">
+			      	<a class="nav-link" href="/campgrounds">Home <span class="sr-only">(current)</span></a>
+			      </li>
+			    </ul>
+			    <!-- Right Side -->
+				  <ul class="navbar-nav">
+				    <% if(!currentUser){ %>
+				        <li class="nav-item <%= typeof page !== 'undefined' && page === 'login' ? 'active' : '' %>">
+				        	<a class="nav-link" href="/login">Login</a>
+				        </li>
+				        <li class="nav-item <%= typeof page !== 'undefined' && page === 'register' ? 'active' : '' %>">
+				        	<a class="nav-link" href="/register">Sign Up</a>
+				        </li>
+				    <% } else { %>
+				        <li class="nav-item">
+				        	<a class="nav-link" href="#">Logged In: <span class="text-light"><%= currentUser.username %></span></a>
+				        </li>
+				        <li class="nav-item">
+				        	<a class="nav-link" href="/logout">Logout</a>
+				        </li>
+				    <% } %>
+				  </ul>
+			  </div>
+
+		  </div>
+		</nav>
+
+		<!-- Flash alerts -->
+		<div class="container">
+		<% if(error && error.length > 0) {%>
+			<div class="alert alert-danger" role="alert">
+				<%= error %>
+			</div>
+		<% } else if (success && success.length > 0 ){%>		
+			<div class="alert alert-success" role="alert">
+				<%= success %>
+			</div>	
+		<% } %>	
+		</div>
+
+		<div class="container">
+
